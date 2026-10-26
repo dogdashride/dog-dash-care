@@ -1,1 +1,28 @@
+name: Send Dog Care Reminders
 
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Supabase reminder function
+        env:
+          FUNCTION_URL: ${{ secrets.SUPABASE_FUNCTION_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$FUNCTION_URL" ] || [ -z "$CRON_SECRET" ]; then
+            echo "Required GitHub secrets are missing."
+            exit 1
+          fi
+
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --url "$FUNCTION_URL" \
+            --header "Content-Type: application/json" \
+            --header "x-cron-secret: $CRON_SECRET" \
+            --data '{}'
