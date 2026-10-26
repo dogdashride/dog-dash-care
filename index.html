@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#176b55">
+<meta name="description" content="Dog Dash Care helps pawrents keep track of their dogs' care reminders.">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>Dog Dash Care</title>
+<style>
+:root{--green:#176b55;--green2:#e6f4ed;--ink:#20332d;--muted:#6a7b74;--line:#e1e9e5;--bg:#f5f8f6;--white:#fff;--red:#b93838;--amber:#9b6513;--shadow:0 8px 26px rgba(26,63,49,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:850px;margin:auto;min-height:100vh;padding-bottom:88px}.top{background:var(--green);color:white;padding:22px 18px 26px;border-radius:0 0 24px 24px}.brand{font-weight:850;font-size:1.15rem;letter-spacing:.2px}.tag{font-size:.85rem;opacity:.86;margin-top:3px}.toprow{display:flex;justify-content:space-between;align-items:start;gap:12px}.top h1{font-size:1.6rem;line-height:1.2;margin:24px 0 7px}.top p{margin:0;opacity:.9}.content{padding:16px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow)}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 2px 10px}.sectionhead h2{font-size:1.05rem;margin:0}.muted{color:var(--muted);font-size:.9rem}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:700;background:var(--green);color:white}.btn.secondary{background:var(--green2);color:var(--green)}.btn.ghost{background:#f1f5f3;color:var(--ink)}.btn.danger{background:#fff0ef;color:var(--red)}.btn.small{padding:8px 10px;font-size:.84rem}.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:white;border:1px solid var(--line);padding:14px;border-radius:16px}.stat b{display:block;font-size:1.5rem}.stat span{color:var(--muted);font-size:.82rem}.dogrow,.reminderrow,.historyrow{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.dogrow:last-child,.reminderrow:last-child,.historyrow:last-child{border-bottom:0;padding-bottom:0}.avatar{width:44px;height:44px;flex:0 0 44px;border-radius:14px;display:grid;place-items:center;background:var(--green2);font-size:1.5rem}.grow{flex:1;min-width:0}.grow strong{display:block}.grow p{margin:4px 0;color:var(--muted);font-size:.88rem}.pill{display:inline-block;border-radius:999px;padding:4px 8px;background:#edf4f0;color:var(--green);font-size:.75rem;font-weight:750}.pill.overdue{background:#fff0ef;color:var(--red)}.pill.today{background:#fff4df;color:var(--amber)}.nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;padding:7px max(8px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom));}.navinner{width:min(850px,100%);display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav button{border:0;background:transparent;color:var(--muted);padding:7px 2px;border-radius:10px;font-size:.72rem}.nav button span{display:block;font-size:1.25rem;margin-bottom:2px}.nav button.active{background:var(--green2);color:var(--green);font-weight:800}.field{margin-bottom:13px}.field label{display:block;font-size:.86rem;font-weight:750;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #cedbd4;border-radius:11px;background:#fff;padding:11px 12px;color:var(--ink)}.field textarea{min-height:75px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}.full{grid-column:1/-1}.hidden{display:none!important}.authwrap{padding:28px 18px;max-width:500px;margin:auto}.authwrap h1{margin-bottom:6px}.notice{padding:12px 14px;border-radius:12px;background:#fff4df;color:#744d0e;font-size:.88rem;margin-bottom:12px}.success{background:#e6f4ed;color:#176b55}.error{background:#fff0ef;color:#a32929}.empty{text-align:center;padding:25px 12px;color:var(--muted)}.empty .emoji{font-size:2rem}.smallnote{font-size:.78rem;color:var(--muted);line-height:1.5}.titleline{display:flex;justify-content:space-between;align-items:center;gap:8px}.titleline h2{margin:0;font-size:1.05rem}.actionlink{color:var(--green);font-weight:750;border:0;background:none;padding:4px}.footer{text-align:center;color:var(--muted);font-size:.75rem;padding:14px}.toast{position:fixed;left:16px;right:16px;bottom:88px;z-index:20;max-width:500px;margin:auto;background:#20332d;color:white;padding:13px 15px;border-radius:12px;box-shadow:var(--shadow)}@media(min-width:650px){.content{padding:22px}.top{padding:26px 26px 30px}.top h1{font-size:1.9rem}.card{padding:20px}}@media(max-width:420px){.grid,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.top h1{font-size:1.45rem}.btn{padding:10px 11px}}
+</style>
+</head>
+<body>
+<div id="authView" class="authwrap">
+  <div class="brand" style="color:var(--green)">🐾 DOG DASH CARE</div>
+  <h1>Care for them, one reminder at a time.</h1>
+  <p class="muted">Keep your dog's care schedule and history in one place.</p>
+  <div id="authNotice" class="notice hidden"></div>
+  <div class="card" style="margin-top:22px">
+    <div class="field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
+    <div class="btnrow"><button class="btn" id="loginBtn">Log in</button><button class="btn secondary" id="signupBtn">Create account</button></div>
+    <p class="smallnote">You may need to confirm your email before logging in, depending on your account settings.</p>
+  </div>
+  <p class="smallnote">Your dog profiles and reminders are saved to your account. Keep your password private.</p>
+</div>
+
+<div id="appView" class="shell hidden">
+  <header class="top">
+    <div class="toprow"><div><div class="brand">🐾 DOG DASH CARE</div><div class="tag">A little reminder for the ones who can't ask.</div></div><button id="logoutBtn" class="btn secondary small">Log out</button></div>
+    <h1 id="greeting">Hello, pawrent!</h1><p id="topSubtitle">Let's keep your dog's care on track.</p>
+  </header>
+  <main id="main" class="content"></main>
+  <nav class="nav"><div class="navinner">
+    <button data-page="home" class="active"><span>🏠</span>Home</button>
+    <button data-page="dogs"><span>🐕</span>My Dogs</button>
+    <button data-page="reminders"><span>📅</span>Reminders</button>
+    <button data-page="history"><span>📋</span>History</button>
+    <button data-page="settings"><span>⚙️</span>Settings</button>
+  </div></nav>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://dmmmsxhaxalawvhdrfvp.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_V2l_HeVLhvjbVxmYE-NMxg_iZWa4Ukj";
+const DOG_DASH_WHATSAPP = "6285117100245";
+const { createClient } = window.supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const $ = id => document.getElementById(id);
+let currentUser=null, dogs=[], reminders=[], history=[], clinics=[], page="home", editingDog=null, editingReminder=null, toastTimer;
+
+const categories = [
+ ["Vaccination","Health"],["Vet appointment","Health"],["Grooming","Grooming"],
+ ["Flea and tick prevention","Medication"],["Deworming","Medication"],
+ ["Ear cleaning","Hygiene"],["Dental scaling","Dental care"],["Nail trimming","Hygiene"],["Custom reminder","Other"]
+];
+const units = [["days","Day(s)"],["weeks","Week(s)"],["months","Month(s)"],["years","Year(s)"]];
+const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const localISO = d => { const x=new Date(d); return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,"0")}-${String(x.getDate()).padStart(2,"0")}`; };
+const dateLabel = s => s ? new Date(s+"T12:00:00").toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"}) : "No date";
+const today = () => localISO(new Date());
+function toast(msg){$("toast").textContent=msg;$("toast").classList.remove("hidden");clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),3200)}
+function showAuthNotice(msg,isError=false){$("authNotice").textContent=msg;$("authNotice").classList.remove("hidden");$("authNotice").classList.toggle("error",isError);$("authNotice").classList.toggle("success",!isError)}
+function showApp(on){$("authView").classList.toggle("hidden",on);$("appView").classList.toggle("hidden",!on)}
+function dueState(date){if(date<today())return ["Overdue","overdue"];if(date===today())return ["Due today","today"];let days=Math.round((new Date(date+"T12:00:00")-new Date(today()+"T12:00:00"))/86400000);return [days===1?"Tomorrow":`In ${days} days`,""]}
+function dogName(id){return dogs.find(d=>d.id===id)?.name||"Dog"}
+function iconFor(cat){return ({"Health":"🩺","Grooming":"✂️","Medication":"💊","Hygiene":"🐾","Dental care":"🦷","Other":"📌"})[cat]||"🐾"}
+function options(items,selected){return items.map(([v,l])=>`<option value="${esc(v)}" ${v===selected?"selected":""}>${esc(l)}</option>`).join("")}
+async function refreshData(){
+ const [d,r,h,c]=await Promise.all([
+  db.from("dogs").select("*").order("created_at",{ascending:true}),
+  db.from("reminders").select("*").order("due_date",{ascending:true}),
+  db.from("care_records").select("*").order("completed_date",{ascending:false}),
+  db.from("vet_clinics").select("*").eq("is_active",true).order("name")
+ ]);
+ for(const [name,res] of [["dogs",d],["reminders",r],["care history",h],["clinics",c]])if(res.error)throw new Error(`${name}: ${res.error.message}`);
+ dogs=d.data||[];reminders=r.data||[];history=h.data||[];clinics=c.data||[];
+}
+async function boot(){
+ const {data:{session}}=await db.auth.getSession();
+ if(session){currentUser=session.user;await loadApp()}else showApp(false);
+ db.auth.onAuthStateChange(async(_event,session)=>{if(session){currentUser=session.user;try{await loadApp()}catch(e){toast(e.message)}}else{currentUser=null;showApp(false)}});
+}
+async function loadApp(){showApp(true);$("greeting").textContent="Hello, pawrent!";try{await refreshData();render()}catch(e){$("main").innerHTML=`<div class="notice error">${esc(e.message)}<br>Check that the database tables and API access are configured.</div>`}}
+$("loginBtn").onclick=async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||!password)return showAuthNotice("Enter your email and password.",true);const {error}=await db.auth.signInWithPassword({email,password});if(error)showAuthNotice(error.message,true)};
+$("signupBtn").onclick=async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||password.length<6)return showAuthNotice("Enter a valid email and a password with at least 6 characters.",true);const {data,error}=await db.auth.signUp({email,password,options:{emailRedirectTo:location.href.split("#")[0]}});if(error)return showAuthNotice(error.message,true);if(data.session){currentUser=data.user;await loadApp()}else showAuthNotice("Account created. Check your email for a confirmation link, then return here and log in.")};
+$("logoutBtn").onclick=async()=>{await db.auth.signOut();showApp(false)};
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{page=b.dataset.page;editingDog=null;editingReminder=null;render()});
+function render(){
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+ if(page==="home")renderHome();else if(page==="dogs")renderDogs();else if(page==="reminders")renderReminders();else if(page==="history")renderHistory();else renderSettings();
+}
+function renderHome(){
+ const active=reminders.filter(r=>r.is_active),over=active.filter(r=>r.due_date<today()),due=active.filter(r=>r.due_date===today()),up=active.filter(r=>r.due_date>=today()).slice(0,5);
+ $("main").innerHTML=`
+ <div class="grid"><div class="stat"><b>${dogs.length}</b><span>My dogs</span></div><div class="stat"><b>${due.length}</b><span>Due today</span></div><div class="stat"><b>${up.length}</b><span>Upcoming reminders</span></div><div class="stat"><b>${over.length}</b><span>Overdue</span></div></div>
+ <div class="sectionhead"><h2>Needs attention</h2><button class="actionlink" onclick="go('reminders')">See all</button></div>
+ <section class="card">${over.length||due.length?renderReminderList([...over,...due].slice(0,5)):`<div class="empty"><div class="emoji">🌿</div><strong>All caught up for today</strong><p class="muted">Your dog's care reminders will appear here.</p></div>`}</section>
+ <div class="sectionhead"><h2>Coming up</h2><button class="actionlink" onclick="go('reminders')">View reminders</button></div>
+ <section class="card">${up.length?renderReminderList(up):`<div class="empty">No upcoming reminders yet.</div>`}</section>
+ <div class="sectionhead"><h2>Your dogs</h2><button class="actionlink" onclick="go('dogs')">Manage</button></div>
+ <section class="card">${dogs.length?dogs.slice(0,3).map(d=>`<div class="dogrow"><div class="avatar">🐕</div><div class="grow"><strong>${esc(d.name)}</strong><p>${esc(d.breed||"Breed not added")}${d.date_of_birth?" · Born "+dateLabel(d.date_of_birth):""}</p></div></div>`).join(""):`<div class="empty">Add your first dog to get started.</div>`}
+ <div class="btnrow"><button class="btn" onclick="go('dogs',true)">+ Add a dog</button><button class="btn secondary" onclick="go('reminders',true)">+ Add reminder</button></div></section>
+ <div class="footer">Dog Dash Care · A little reminder for the ones who can't ask.</div>`;
+}
+function go(p,add=false){page=p;editingDog=null;editingReminder=null;render();if(add){if(p==="dogs")renderDogForm();if(p==="reminders")renderReminderForm()}}
+function renderReminderList(list){return list.map(r=>{const [state,cls]=dueState(r.due_date);return `<div class="reminderrow"><div class="avatar">${iconFor(r.category)}</div><div class="grow"><strong>${esc(r.title)}</strong><p>${esc(dogName(r.dog_id))} · ${dateLabel(r.due_date)}</p><span class="pill ${cls}">${state}</span><div class="btnrow"><button class="btn small" onclick="openReminder('${r.id}')">Open</button><button class="btn secondary small" onclick="completeReminder('${r.id}')">Mark done</button></div></div></div>`}).join("")}
+function renderDogs(){
+ $("main").innerHTML=`<div class="titleline"><h2>My dogs</h2><button class="btn" onclick="renderDogForm()">+ Add dog</button></div><p class="muted">Each dog has their own care schedule and history.</p><section id="dogFormSlot"></section><section class="card">${dogs.length?dogs.map(d=>`<div class="dogrow"><div class="avatar">🐕</div><div class="grow"><strong>${esc(d.name)}</strong><p>${esc(d.breed||"Breed not added")} · ${esc(d.gender||"Gender not set")}${d.weight_kg?` · ${d.weight_kg} kg`:""}</p><p>${d.date_of_birth?"Born "+dateLabel(d.date_of_birth):"Date of birth not added"}</p><div class="btnrow"><button class="btn secondary small" onclick="editDog('${d.id}')">Edit</button><button class="btn ghost small" onclick="newReminderFor('${d.id}')">Add reminder</button><button class="btn danger small" onclick="deleteDog('${d.id}')">Delete</button></div></div></div>`).join(""):`<div class="empty"><div class="emoji">🐕</div><strong>No dog profiles yet</strong><p>Add a dog to create their care reminders.</p></div>`}</section>`;
+}
+function renderDogForm(){
+ const d=editingDog?dogs.find(x=>x.id===editingDog):null;
+ $("dogFormSlot").innerHTML=`<form class="card" id="dogForm"><div class="titleline"><h2>${d?"Edit dog":"Add a dog"}</h2><button type="button" class="actionlink" onclick="cancelDogForm()">Cancel</button></div>
+ <div class="formgrid"><div class="field"><label>Dog's name *</label><input name="name" required maxlength="80" value="${esc(d?.name||"")}" placeholder="e.g. Milo"></div><div class="field"><label>Breed</label><input name="breed" value="${esc(d?.breed||"")}" placeholder="e.g. Shih Tzu"></div>
+ <div class="field"><label>Date of birth</label><input name="date_of_birth" type="date" value="${esc(d?.date_of_birth||"")}"></div><div class="field"><label>Gender</label><select name="gender">${options([["","Not specified"],["male","Male"],["female","Female"],["unknown","Unknown"]],d?.gender||"")}</select></div>
+ <div class="field"><label>Weight (kg)</label><input name="weight_kg" type="number" min=".1" step=".1" value="${esc(d?.weight_kg||"")}" placeholder="Optional"></div><div class="field full"><label>Notes</label><textarea name="notes" placeholder="Anything useful to remember">${esc(d?.notes||"")}</textarea></div></div>
+ <div class="btnrow"><button class="btn" type="submit">${d?"Save changes":"Save dog"}</button></div></form>`;
+ $("dogForm").onsubmit=saveDog;
+}
+function cancelDogForm(){editingDog=null;renderDogs()}
+function editDog(id){editingDog=id;renderDogs();renderDogForm();window.scrollTo({top:0,behavior:"smooth"})}
+async function saveDog(e){e.preventDefault();const f=new FormData(e.target);const payload={user_id:currentUser.id,name:f.get("name").trim(),breed:f.get("breed")||null,date_of_birth:f.get("date_of_birth")||null,gender:f.get("gender")||null,weight_kg:f.get("weight_kg")?Number(f.get("weight_kg")):null,notes:f.get("notes")||null,updated_at:new Date().toISOString()};const res=editingDog?await db.from("dogs").update(payload).eq("id",editingDog):await db.from("dogs").insert(payload);if(res.error)return toast(res.error.message);editingDog=null;await refreshData();render();toast("Dog profile saved.") }
+async function deleteDog(id){if(!confirm(`Delete ${dogName(id)} and their associated reminders and care history? This cannot be undone.`))return;const {error}=await db.from("dogs").delete().eq("id",id);if(error)return toast(error.message);await refreshData();render();toast("Dog profile deleted.")}
+function newReminderFor(id){page="reminders";render();renderReminderForm(id)}
+function renderReminders(){
+ $("main").innerHTML=`<div class="titleline"><h2>Care reminders</h2><button class="btn" onclick="renderReminderForm()">+ Add reminder</button></div><p class="muted">Choose the due date and how often each task repeats.</p><section id="reminderFormSlot"></section>
+ <div class="sectionhead"><h2>Active reminders</h2></div><section class="card">${reminders.filter(r=>r.is_active).length?renderReminderList(reminders.filter(r=>r.is_active)):`<div class="empty"><div class="emoji">📅</div><strong>No reminders yet</strong><p>Create a reminder to get started.</p></div>`}</section>
+ ${reminders.some(r=>!r.is_active)?`<div class="sectionhead"><h2>Paused reminders</h2></div><section class="card">${reminders.filter(r=>!r.is_active).map(r=>`<div class="reminderrow"><div class="grow"><strong>${esc(r.title)}</strong><p>${esc(dogName(r.dog_id))} · ${dateLabel(r.due_date)}</p><button class="btn secondary small" onclick="toggleReminder('${r.id}',true)">Resume</button></div></div>`).join("")}</section>`:""}`;
+}
+function renderReminderForm(dogId=null){
+ if(!dogs.length){$("reminderFormSlot").innerHTML=`<div class="notice">Add a dog profile before creating a reminder. <button class="actionlink" onclick="go('dogs',true)">Add dog</button></div>`;return}
+ const r=editingReminder?reminders.find(x=>x.id===editingReminder):null;
+ const defaultDog=dogId||r?.dog_id||dogs[0].id;
+ $("reminderFormSlot").innerHTML=`<form class="card" id="reminderForm"><div class="titleline"><h2>${r?"Edit reminder":"New reminder"}</h2><button type="button" class="actionlink" onclick="cancelReminderForm()">Cancel</button></div>
+ <div class="formgrid"><div class="field"><label>Dog *</label><select name="dog_id" required>${dogs.map(d=>`<option value="${d.id}" ${d.id===defaultDog?"selected":""}>${esc(d.name)}</option>`).join("")}</select></div>
+ <div class="field"><label>Care type *</label><select name="category" id="categorySelect">${options(categories.map(([name,cat])=>[name,name]),r?.title||"Vaccination")}</select></div>
+ <div class="field full hidden" id="customTitleWrap"><label>Custom reminder name *</label><input name="custom_title" id="customTitle" placeholder="e.g. Skin treatment"></div>
+ <div class="field"><label>Next due date *</label><input type="date" name="due_date" required value="${esc(r?.due_date||"")}"></div>
+ <div class="field"><label>Repeat interval</label><div style="display:flex;gap:8px"><input name="repeat_interval" type="number" min="1" max="999" value="${esc(r?.repeat_interval||"")}" placeholder="No repeat" style="min-width:0"><select name="repeat_unit" style="min-width:0">${options([["days","Days"],["weeks","Weeks"],["months","Months"],["years","Years"]],r?.repeat_unit||"months")}</select></div><p class="smallnote">Leave the number blank for a one-time reminder.</p></div>
+ <div class="field full"><label>Notes (optional)</label><textarea name="notes" placeholder="Instructions from your vet or other details">${esc(r?.notes||"")}</textarea></div>
+ <div class="field"><label><input type="checkbox" name="notify_3_days_before" ${r?.notify_3_days_before!==false?"checked":""} style="width:auto"> Remind me 3 days before</label></div><div class="field"><label><input type="checkbox" name="notify_on_due" ${r?.notify_on_due!==false?"checked":""} style="width:auto"> Remind me on the due date</label></div>
+ </div><p class="smallnote">Choose health and medication schedules recommended by your veterinarian or product instructions. This app does not determine medical intervals.</p><div class="btnrow"><button class="btn" type="submit">${r?"Save changes":"Save reminder"}</button></div></form>`;
+ const sel=$("categorySelect");function updateCustom(){const is=sel.value==="Custom reminder";$("customTitleWrap").classList.toggle("hidden",!is);$("customTitle").required=is}
+ sel.onchange=updateCustom;updateCustom();$("reminderForm").onsubmit=saveReminder;
+}
+function cancelReminderForm(){editingReminder=null;renderReminders()}
+async function saveReminder(e){e.preventDefault();const f=new FormData(e.target),choice=f.get("category"),isCustom=choice==="Custom reminder",interval=f.get("repeat_interval");const payload={user_id:currentUser.id,dog_id:f.get("dog_id"),title:isCustom?f.get("custom_title").trim():choice,category:categories.find(c=>c[0]===choice)?.[1]||"Other",notes:f.get("notes")||null,due_date:f.get("due_date"),repeat_interval:interval?Number(interval):null,repeat_unit:interval?f.get("repeat_unit"):null,notify_3_days_before:f.has("notify_3_days_before"),notify_on_due:f.has("notify_on_due"),is_active:true,updated_at:new Date().toISOString()};const res=editingReminder?await db.from("reminders").update(payload).eq("id",editingReminder):await db.from("reminders").insert(payload);if(res.error)return toast(res.error.message);editingReminder=null;await refreshData();render();toast("Reminder saved.")}
+function openReminder(id){const r=reminders.find(x=>x.id===id);if(!r)return;const clinicText=clinics.length?clinics.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join(""):`<option value="">No clinics added yet</option>`;const message=`Hi Dog Dash! I'd like to arrange transportation for my dog, ${dogName(r.dog_id)}, for ${r.title.toLowerCase()}. Preferred date: ${r.due_date}. Could you help me arrange the trip?`;const wa=`https://wa.me/${DOG_DASH_WHATSAPP}?text=${encodeURIComponent(message)}`;const html=`<div class="notice"><strong>${esc(r.title)}</strong> for ${esc(dogName(r.dog_id))}<br>Due: ${dateLabel(r.due_date)}<br>${esc(r.notes||"No extra notes.")}</div><div class="card"><h2>What would you like to do?</h2><p class="muted">Choose a vet clinic or ask Dog Dash to help with transportation.</p><div class="field"><label>Preferred vet clinic</label><select id="clinicSelect">${clinicText}</select></div><div class="btnrow"><button class="btn" onclick="openClinic('${r.id}')">🏥 Make a Vet Appointment</button><a class="btn secondary" style="text-decoration:none;display:inline-block" href="${wa}" target="_blank" rel="noopener">🚗 Call Dog Dash</a></div>${clinics.length?"":'<p class="smallnote">The clinic directory will be added later. You can still contact Dog Dash.</p>'}<div class="btnrow"><button class="btn ghost" onclick="editReminder('${r.id}')">Edit reminder</button><button class="btn ghost" onclick="toggleReminder('${r.id}',false)">Pause reminder</button><button class="btn danger" onclick="deleteReminder('${r.id}')">Delete</button></div></div>`;$("main").innerHTML=`<button class="actionlink" onclick="go('reminders')">← Back to reminders</button>${html}`;window.scrollTo({top:0,behavior:"smooth"})}
+function openClinic(reminderId){const r=reminders.find(x=>x.id===reminderId),id=$("clinicSelect")?.value,c=clinics.find(x=>x.id===id);if(!c||!c.whatsapp_number)return toast("No clinic WhatsApp number is available yet. Please choose another clinic when the directory is added.");const message=`Hello, I'd like to make an appointment for my dog, ${dogName(r.dog_id)}, for ${r.title.toLowerCase()}. Preferred date: ${r.due_date}. Could you please share your available schedule?`;window.open(`https://wa.me/${c.whatsapp_number.replace(/\D/g,"")}?text=${encodeURIComponent(message)}`,"_blank","noopener")}
+function editReminder(id){editingReminder=id;renderReminders();renderReminderForm();window.scrollTo({top:0,behavior:"smooth"})}
+async function toggleReminder(id,active){const {error}=await db.from("reminders").update({is_active:active,updated_at:new Date().toISOString()}).eq("id",id);if(error)return toast(error.message);await refreshData();page="reminders";render();toast(active?"Reminder resumed.":"Reminder paused.")}
+async function deleteReminder(id){if(!confirm("Delete this reminder? Existing care history will be kept."))return;const {error}=await db.from("reminders").delete().eq("id",id);if(error)return toast(error.message);await refreshData();page="reminders";render();toast("Reminder deleted.")}
+async function completeReminder(id){const r=reminders.find(x=>x.id===id);if(!r)return;if(!confirm(`Mark "${r.title}" for ${dogName(r.dog_id)} as completed today?`))return;const ins=await db.from("care_records").insert({user_id:currentUser.id,dog_id:r.dog_id,reminder_id:r.id,title:r.title,category:r.category,scheduled_date:r.due_date,completed_date:today(),notes:r.notes||null});if(ins.error)return toast(ins.error.message);if(r.repeat_interval&&r.repeat_unit){const next=new Date(r.due_date+"T12:00:00");const n=r.repeat_interval;if(r.repeat_unit==="days")next.setDate(next.getDate()+n);if(r.repeat_unit==="weeks")next.setDate(next.getDate()+7*n);if(r.repeat_unit==="months")next.setMonth(next.getMonth()+n);if(r.repeat_unit==="years")next.setFullYear(next.getFullYear()+n);const upd=await db.from("reminders").update({due_date:localISO(next),updated_at:new Date().toISOString()}).eq("id",r.id);if(upd.error)return toast("Care saved, but next reminder could not be updated: "+upd.error.message)}else{const upd=await db.from("reminders").update({is_active:false,updated_at:new Date().toISOString()}).eq("id",r.id);if(upd.error)return toast("Care saved, but reminder could not be closed: "+upd.error.message)}await refreshData();render();toast("Care recorded in history.")}
+function renderHistory(){$("main").innerHTML=`<h2>Care history</h2><p class="muted">A record of the care you've marked as completed.</p><section class="card">${history.length?history.map(h=>`<div class="historyrow"><div class="avatar">${iconFor(h.category)}</div><div class="grow"><strong>${esc(h.title)}</strong><p>${esc(dogName(h.dog_id))} · Completed ${dateLabel(h.completed_date)}</p><p class="smallnote">Scheduled: ${dateLabel(h.scheduled_date)}${h.notes?" · "+esc(h.notes):""}</p></div></div>`).join(""):`<div class="empty"><div class="emoji">📋</div><strong>No completed care yet</strong><p>Use “Mark done” on a reminder to add it here.</p></div>`}</section><p class="smallnote">For recurring reminders, the next due date is calculated from the previous scheduled date. If your vet gives you a different next date, edit the reminder.</p>`}
+function renderSettings(){$("main").innerHTML=`<h2>Settings</h2><section class="card"><h3>Account</h3><p class="muted">${esc(currentUser?.email||"Signed in")}</p><div class="btnrow"><button class="btn secondary" onclick="changePassword()">Change password</button><button class="btn ghost" onclick="enableNotifications()">Enable browser notifications</button></div></section><section class="card"><h3>Reminders and notifications</h3><p class="muted">Your reminder list is available here whenever you open the app. This first version does not yet deliver scheduled push notifications while the app is closed.</p><div class="notice">Push notifications need a separate server-side scheduler and Web Push setup. Please don't rely on this prototype as your only medical or medication reminder.</div></section><section class="card"><h3>Vet clinics</h3><p class="muted">${clinics.length?`${clinics.length} active clinic(s) available.`:"The clinic directory has not been populated yet."}</p><p class="smallnote">Clinic details will be added later. Only use verified clinic contact details.</p></section><section class="card"><h3>About</h3><p>Dog Dash Care helps pawrents organize their dogs' care schedules.</p><p class="smallnote">Care intervals are chosen by the pawrent. Follow advice from your veterinarian and product instructions for medical care.</p></section>`}
+async function changePassword(){const password=prompt("Enter a new password (at least 6 characters):");if(!password)return;if(password.length<6)return toast("Password must be at least 6 characters.");const {error}=await db.auth.updateUser({password});toast(error?error.message:"Password updated.");}
+async function enableNotifications(){if(!("Notification"in window))return toast("This browser does not support notifications.");const p=await Notification.requestPermission();if(p==="granted"){new Notification("Dog Dash Care",{body:"Notifications are enabled for this browser. Scheduled reminders are not yet configured."});toast("Browser notifications enabled. Scheduled push still needs setup.")}else toast("Notification permission was not granted.");}
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+boot();
+</script>
+</body>
+</html>
